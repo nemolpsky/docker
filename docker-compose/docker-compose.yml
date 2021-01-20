@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+# redis配置
+  redis:
+    # 镜像标签
+    image: redis:6.0.10
+    # 端口映射
+    ports:
+      - 6379:6379
+    # 映射目录，./redis/data/是yml文件所在目录，/data是根目录
+    volumes:
+      - ./redis/data/:/data
+# nginx配置
+  nginx:
+    # 镜像标签
+    image: nginx:1.19.6
+    # 端口映射
+    ports:
+      - 80:80
+    # 映射目录
+    volumes:
+      - ./nginx/html/:/usr/share/nginx/html
+      - ./nginx/log/:/var/log/nginx
